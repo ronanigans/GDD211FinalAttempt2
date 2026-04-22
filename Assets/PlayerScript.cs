@@ -61,9 +61,9 @@ public class PlayerScript : MonoBehaviour
             wireGame.SetActive(true);
         } else if (game == "Keypad") {
             keypadGame.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Q)){
+           /* if (Input.GetKeyDown(KeyCode.Q)){
                 button1.SetActive(true);
-            }
+            } */
         } else if (game == "Heating") {
             heatGame.SetActive(true);
         }
