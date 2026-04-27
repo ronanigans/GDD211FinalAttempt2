@@ -11,6 +11,9 @@ public class PlayerScript : MonoBehaviour
     public float Gravity;
     public float WalkSpeed;
     private float yspeed;
+    //score
+    private float score = 0;
+    [SerializeField] TextMeshProUGUI scoreScavenged;
     //timer
     private float timer = 60;
     [SerializeField] TextMeshProUGUI timeLeft;
@@ -39,12 +42,16 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit)) {
                 if(hit.collider.CompareTag(scrap)){
+                    score++;
                    PlayMiniGame(scrap);
                 } else if (hit.collider.CompareTag(wires)){
+                    score++;
                    PlayMiniGame(wires);
                 } else if (hit.collider.CompareTag(keypad)){
+                    score++;
                     PlayMiniGame(keypad);
                 } else if (hit.collider.CompareTag(heating)){
+                    score++;
                     PlayMiniGame(heating);
                 }
 
@@ -76,7 +83,7 @@ public class PlayerScript : MonoBehaviour
         if(!inGame){
             timer -= Time.deltaTime;
             if (timer <= 0) {
-                SceneManager.LoadScene("LevelOne");
+                SceneManager.LoadScene(2);
             }
             timeLeft.text = timer.ToString();
             Cursor.lockState = CursorLockMode.Locked; 
@@ -91,7 +98,7 @@ public class PlayerScript : MonoBehaviour
             //Apply gravity
             move += new Vector3(0, yspeed, 0);
 
-
+            scoreScavenged.text = score.ToString();
             Cc.Move(move * Time.deltaTime);
             HandleRaycasting();
         }
