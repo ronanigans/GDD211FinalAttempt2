@@ -8,6 +8,8 @@ TagManager:
   - Keypad
   - Wires
   - Heating
+  - WireSocket
+  - Leaver
   layers:
   - Default
   - TransparentFX
